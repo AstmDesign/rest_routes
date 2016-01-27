@@ -5,6 +5,11 @@ class PostsController < ApplicationController
   before_action :set_post_id, only: [:publish, :unpublish]
 
 
+  def featured
+    PostFeatured(params[:post_id])
+    redirect_to posts_path(), notice: 'The post featured was successfully changed.'
+  end
+
   def publish
     # publish the post "Allow the admin to publish the post from the backEnd"
     @post.published = true

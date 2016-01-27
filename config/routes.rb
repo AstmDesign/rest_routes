@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :posts do
     get :publish
     get :unpublish
+    get :featured
   end
 
 

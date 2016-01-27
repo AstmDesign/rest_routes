@@ -25,7 +25,13 @@
             <%= link_to "Publish", post_publish_path(post.id) %>
           <% end %>
         </td>
-        <td><%= post.featured %></td>
+        <td>
+          <% if post.featured %>
+            <%= link_to "Unfeatured", post_featured_path(post.id) %>
+          <% else %>
+            <%= link_to "Featured", post_featured_path(post.id) %>
+          <% end %>
+        </td>
         <td class="icon"><%= link_to 'Show', post %></td>
         <td class="icon"><%= link_to 'Edit', edit_post_path(post) %></td>
         <td class="icon"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
