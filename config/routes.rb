@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :posts
 
   root 'posts#index'
+
+  resources :posts do
+    get :publish
+    get :unpublish
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

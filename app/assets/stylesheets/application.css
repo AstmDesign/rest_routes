@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+table {
+  width: 100%;
+}
+
+th,td {
+  float:left;
+  width: 25%;
+  text-align: left;
+}
+
+.icon {
+  width: 5%;
+}

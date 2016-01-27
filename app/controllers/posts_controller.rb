@@ -1,7 +1,23 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  # If we installed the devise gem we will add user authentication
+  # before_action :authenticate_user!
+  before_action :set_post_id, only: [:publish, :unpublish]
 
 
+  def publish
+    # publish the post "Allow the admin to publish the post from the backEnd"
+    @post.published = true
+    @post.save
+    redirect_to posts_path(), notice: 'The post was successfully published.'
+  end
+
+  def unpublish
+    # Unpublish the post "Allow the admin to unpublish the post from the backEnd"
+    @post.published = false
+    @post.save
+    redirect_to posts_path(), notice: 'The post was successfully unpublished.'
+  end
 
   # GET /posts
   # GET /posts.json
@@ -9,19 +25,12 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
-  def show
-  end
 
   # GET /posts/new
   def new
     @post = Post.new
   end
 
-  # GET /posts/1/edit
-  def edit
-  end
 
   # POST /posts
   # POST /posts.json
@@ -67,6 +76,11 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    # using in publish/unpublish methods
+    def set_post_id
+      @post = Post.find(params[:post_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
