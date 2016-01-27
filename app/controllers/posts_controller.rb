@@ -2,11 +2,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   # If we installed the devise gem we will add user authentication
   # before_action :authenticate_user!
-  before_action :set_post_id, only: [:publish, :unpublish]
+  before_action :set_post_id, only: [:publish, :unpublish,:featured]
 
 
   def featured
-    PostFeatured(params[:post_id])
+    PostFeatured(@post)
     redirect_to posts_path(), notice: 'The post featured was successfully changed.'
   end
 

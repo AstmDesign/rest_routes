@@ -26,6 +26,7 @@
           <% end %>
         </td>
         <td>
+          <%=post.featured %>
           <% if post.featured %>
             <%= link_to "Unfeatured", post_featured_path(post.id) %>
           <% else %>

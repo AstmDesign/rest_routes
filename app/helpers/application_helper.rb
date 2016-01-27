@@ -1,10 +1,12 @@
 module ApplicationHelper
 
 
-  def PostFeatured(id)
+  def PostFeatured(post)
+    # @post=Post.where(:id => id).first
+    post.update_attribute("featured",!post.featured)
+    # @post.featured == true ? @post.featured = false : @post.featured = true
+    # post.save
     # byebug
-    @post=Post.where(:id => id).first
-    @post.featured == true ? @post.featured = false : @post.featured = true
-    @post.save
+
   end
 end
