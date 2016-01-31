@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :posts do
-    get :publish
-    get :unpublish
-    get :featured
+    put :publish
+    put :featured
   end
 
 
